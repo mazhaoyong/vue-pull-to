@@ -189,7 +189,7 @@ var Component = __webpack_require__(44)(
   /* template */
   __webpack_require__(45),
   /* scopeId */
-  "data-v-12abd9fb",
+  "data-v-5669c6c0",
   /* cssModules */
   null
 )
@@ -413,7 +413,9 @@ exports.default = {
       throttleEmitTopPull: null,
       throttleEmitBottomPull: null,
       throttleEmitScroll: null,
-      throttleOnInfiniteScroll: null
+      throttleOnInfiniteScroll: null,
+      showTopActionBlock: true,
+      showBottomActionBlock: true
     };
   },
 
@@ -423,6 +425,12 @@ exports.default = {
     },
     _bottomConfig: function _bottomConfig() {
       return (0, _assign2.default)({}, _config.BOTTOM_DEFAULT_CONFIG, this.bottomConfig);
+    },
+    _showTopActionBlock: function _showTopActionBlock() {
+      return this.topLoadMethod && this.showTopActionBlock;
+    },
+    _showBottomActionBlock: function _showBottomActionBlock() {
+      return this.topLoadMethod && this.showBBottomActionBlock;
     }
   },
   watch: {
@@ -445,6 +453,8 @@ exports.default = {
     },
     actionLoading: function actionLoading() {
       this.state = 'loading';
+      this.showTopActionBlock = true;
+      this.showBottomActionBlock = true;
       if (this.direction === 'down') {
         this.topText = this._topConfig.loadingText;
         /* eslint-disable no-useless-call */
@@ -476,6 +486,8 @@ exports.default = {
         // reset state
         setTimeout(function () {
           _this.state = '';
+          _this.showTopActionBlock = false;
+          _this.showBottomActionBlock = false;
         }, 200);
       }, loadedStayTime);
     },
@@ -1046,7 +1058,7 @@ exports = module.exports = __webpack_require__(43)(undefined);
 
 
 // module
-exports.push([module.i, ".vue-pull-to-wrapper[data-v-12abd9fb]{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;height:100%}.scroll-container[data-v-12abd9fb]{-webkit-box-flex:1;-webkit-flex:1;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}.vue-pull-to-wrapper .action-block[data-v-12abd9fb]{position:relative;width:100%}.default-text[data-v-12abd9fb]{height:100%;line-height:50px;text-align:center}", ""]);
+exports.push([module.i, ".vue-pull-to-wrapper[data-v-5669c6c0]{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;height:100%}.scroll-container[data-v-5669c6c0]{-webkit-box-flex:1;-webkit-flex:1;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}.vue-pull-to-wrapper .action-block[data-v-5669c6c0]{position:relative;width:100%}.default-text[data-v-5669c6c0]{height:100%;line-height:50px;text-align:center}", ""]);
 
 // exports
 
@@ -1201,7 +1213,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       height: _vm.wrapperHeight,
       transform: ("translate3d(0, " + _vm.diff + "px, 0)")
     })
-  }, [(_vm.topLoadMethod) ? _c('div', {
+  }, [(_vm._showTopActionBlock) ? _c('div', {
     staticClass: "action-block",
     style: ({
       height: (_vm.topBlockHeight + "px"),
@@ -1214,7 +1226,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     stateText: _vm.topText
   })], 2) : _vm._e(), _vm._v(" "), _c('div', {
     staticClass: "scroll-container"
-  }, [_vm._t("default")], 2), _vm._v(" "), (_vm.bottomLoadMethod) ? _c('div', {
+  }, [_vm._t("default")], 2), _vm._v(" "), (_vm._showBottomActionBlock) ? _c('div', {
     staticClass: "action-block",
     style: ({
       height: (_vm.bottomBlockHeight + "px"),
@@ -1239,7 +1251,7 @@ var content = __webpack_require__(42);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(47)("0cd817f2", content, true);
+var update = __webpack_require__(47)("26a20bbb", content, true);
 
 /***/ }),
 /* 47 */
